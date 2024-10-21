@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{840DD3A5-1D7B-4C56-842F-BA673ED3EE70}</ProjectGuid>
+    <ProjectGuid>{7B80A755-1ED3-4A92-91D0-DD557E2CDC99}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -15,7 +15,7 @@
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44354</IISExpressSSLPort>
+    <IISExpressSSLPort>44318</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -60,6 +60,9 @@
     <Content Include="API.aspx" />
     <Content Include="index.html" />
     <Content Include="js.js" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.min.js" />
     <Content Include="type.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -74,9 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lib\Lib.csproj">
-      <Project>{ae3d9cbe-12f2-4e23-b72e-1441e24d9078}</Project>
-      <Name>Lib</Name>
+    <ProjectReference Include="..\lib_DB\lib_DB.csproj">
+      <Project>{1ebd7e52-8e42-452a-958b-555aaab08738}</Project>
+      <Name>lib_DB</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -92,9 +95,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52009</DevelopmentServerPort>
+          <DevelopmentServerPort>52281</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44354/</IISUrl>
+          <IISUrl>https://localhost:44318/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

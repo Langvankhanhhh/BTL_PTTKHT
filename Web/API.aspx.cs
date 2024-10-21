@@ -9,9 +9,6 @@ namespace Web
 {
     public partial class API : System.Web.UI.Page
     {
-        private static string connectionString = "Data Source=.;Initial Catalog=QL_lichsu;Integrated Security=True";
-        private static int loginAttempts = 0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             string action = this.Request["action"];
@@ -36,7 +33,6 @@ namespace Web
             }
         }
 
-
         void add()
         {
             string id_sk = this.Request["id_sk"];
@@ -46,15 +42,15 @@ namespace Web
             string ngay_ketthuc = this.Request["ngay_ketthuc"];
             string loai_sk = this.Request["loai_sk"];
 
-            Lib.DB_sk_ls db = get_db();
-            string json = db.add(id_sk, ten_sk,mo_ta,ngay_batdau,ngay_ketthuc,loai_sk);
+            lib_DB.DB_skls db = get_db();
+            string json = db.add(id_sk, ten_sk, mo_ta, ngay_batdau, ngay_ketthuc, loai_sk);
             this.Response.Write(json);
         }
 
         void delete()
         {
             string id_sk = this.Request["id_sk"];
-            Lib.DB_sk_ls db = get_db();
+            lib_DB.DB_skls db = get_db();
             string json = db.delete(id_sk);
             this.Response.Write(json);
         }
@@ -68,7 +64,7 @@ namespace Web
             string ngay_ketthuc = this.Request["ngay_ketthuc"];
             string loai_sk = this.Request["loai_sk"];
 
-            Lib.DB_sk_ls db = get_db();
+            lib_DB.DB_skls db = get_db();
             string json = db.update(id_sk, ten_sk, mo_ta, ngay_batdau, ngay_ketthuc, loai_sk);
             this.Response.Write(json);
         }
@@ -78,17 +74,17 @@ namespace Web
             string rep = "{\"ok\":false,\"msg\":\"Lỗi rồi nhé, ko có action này!\"}";
             this.Response.Write(rep);
         }
-        Lib.DB_sk_ls get_db()
+        lib_DB.DB_skls get_db()
         {
-            Lib.DB_sk_ls db = new Lib.DB_sk_ls();
-            db.cnstr = "Data Source=.;Initial Catalog=web_quan_ly_57kmt;Integrated Security=True;";
+            lib_DB.DB_skls db = new lib_DB.DB_skls();
+            db.cnstr = "Data Source=.;Initial Catalog=Ql_lichsu;Integrated Security=True;";
             return db;
         }
 
 
         void get_status()
         {
-            Lib.DB_sk_ls db = get_db();
+            lib_DB.DB_skls db = get_db();
             string json = db.get_status();
             this.Response.Write(json);
         }

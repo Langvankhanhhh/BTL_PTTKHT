@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DADFA133-2B1B-4569-B8FA-CE0FAD2BB1E8}</ProjectGuid>
+    <ProjectGuid>{1EBD7E52-8E42-452A-958B-555AAAB08738}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lib_ReađB</RootNamespace>
-    <AssemblyName>Lib_ReađB</AssemblyName>
+    <RootNamespace>lib_DB</RootNamespace>
+    <AssemblyName>lib_DB</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -36,7 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DB_SK_LS.cs" />
+    <Compile Include="DB_skls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Text;
 
-namespace Lib
+namespace lib_DB
 {
-    public class DB_sk_ls
+    public class DB_skls
     {
         public string cnstr;
         public string get_status()
