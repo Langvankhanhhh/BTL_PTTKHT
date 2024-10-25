@@ -28,7 +28,7 @@
   - Báo cáo chuyển đổi truy cập
   - Thống kê số lượng bài viết, bình luận để đánh giá mức độ tương tác của website
     
-  # Chức năng Phân loại theo Chủ đề và Thời k
+  # Chức năng Phân loại theo Chủ đề và Thời kỳ
   - Cung cấp các danh mục như thời kỳ phong kiến, thời kỳ kháng chiến, hoặc từng sự kiện, nhân vật lịch sử cụ thể
   - Cho phép người dùng dễ dàng tìm kiếm và tiếp cận nội dung mình quan tâm
   # Chức năng Quản lý Hình ảnh và Tài liệu Kèm theo
