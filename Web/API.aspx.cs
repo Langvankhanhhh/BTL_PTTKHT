@@ -77,7 +77,7 @@ namespace Web
         lib_DB.DB_skls get_db()
         {
             lib_DB.DB_skls db = new lib_DB.DB_skls();
-            db.cnstr = "Data Source=.;Initial Catalog=Ql_lichsu;Integrated Security=True;";
+            db.cnstr = "Data Source=KHANH\\SQLEXPRESS01;Initial Catalog=Ql_lichsu;Integrated Security=True;";
             return db;
         }
 
