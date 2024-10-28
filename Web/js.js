@@ -1,49 +1,120 @@
 ﻿$(document).ready(function () {
     function loadTable() {
-        var tbody = $("#infoTable").find('tbody');
-        tbody.empty();
-        tbody.append('<tr><td colspan="4">Dữ liệu trống</td></tr>');
-
-        $.post('api.aspx', { action: 'get_infor' }, function (data) {
-            tbody.empty();
+        var container = $("#skls");
+        container.empty();
+        container.append('<div>Đang tải dữ liệu...</div>');
+        var dataSKLS = [];
+        var dataDD = [];
+        var dataNV = [];
+        var dataTDQT = [];
+        $.post('API.aspx', { action: 'get_infor', data_get: 'dd' }, function (data) {
+            dataDD = data;
+        }, 'json');
+        $.post('API.aspx', { action: 'get_infor', data_get: 'nv' }, function (data) {
+            dataNV = data;
+        }, 'json');
+        $.post('API.aspx', { action: 'get_infor', data_get: 'tdqt' }, function (data) {
+            dataTDQT = data;
+        }, 'json');
+        $.post('API.aspx', { action: 'get_infor', data_get: "skls" }, function (data) {
+            container.empty();
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
                     var history = data[i];
-                    var hangMoi = $("<tr></tr>");
-                    hangMoi.append($("<td></td>").text(history.id_su_kien));
-                    hangMoi.append($("<td></td>").text(history.ten_su_kien));
-                    hangMoi.append($("<td></td>").text(history.mo_ta));
-                    hangMoi.append($("<td></td>").text(history.ngay_bat_dau));
-                    hangMoi.append($("<td></td>").text(history.ngay_ket_thuc));
-                    hangMoi.append($("<td></td>").text(history.loai_su_kien));
-                    hangMoi.append($("<td></td>").html(
-                        `<button class="edit-btn" onclick="chinhSuaHang(${history.id_su_kien}, this)">Sửa</button>
-                         <button class="delete-btn" onclick="xoaHang(${history.id_su_kien}, this)">Xóa</button>
-                         <button class="history-btn" onclick="xemLs(${history.id_su_kien})">Lịch sử</button>`
+                    var eventDiv = $("<div class='event'></div>");
+                    eventDiv.append($("<div></div>").text("ID Sự Kiện: " + history.id_su_kien));
+                    eventDiv.append($("<div></div>").text("Tên Sự Kiện: " + history.ten_su_kien));
+                    eventDiv.append($("<div></div>").text("Mô Tả: " + history.mo_ta));
+                    eventDiv.append($("<div></div>").text("Ngày Bắt Đầu: " + history.ngay_bat_dau));
+                    eventDiv.append($("<div></div>").text("Ngày Kết Thúc: " + history.ngay_ket_thuc));
+                    eventDiv.append($("<div></div>").text("Loại Sự Kiện: " + history.loai_su_kien));
+                    for (var j = 0; j < dataNV.length; j++) {
+                        var nv = dataNV[j];
+                        if (history.id_nhan_vat == nv.id_nhan_vat) {
+                            eventDiv.append($("<div></div>").text("Nhân Vật Liên Quan: " + nv.ten_nhan_vat));
+                            eventDiv.append($("<div></div>").text("Ngày Sinh: " + nv.ngay_sinh));
+                            eventDiv.append($("<div></div>").text("Ngày Mất: " + nv.ngay_mat));
+                            eventDiv.append($("<div></div>").text("Vai Trò: " + nv.vai_tro));
+                            eventDiv.append($("<div></div>").text("Giới Thiệu Nhân Vật: " + nv.mo_ta_nv));
+                            break;
+                        }
+                    }
+                    for (var k = 0; k < dataDD.length; k++) {
+                        var dd = dataDD[k];
+                        if (history.id_dia_diem == dd.id_dia_diem) {
+                            eventDiv.append($("<div></div>").text("Địa Điểm Diễn Ra: " + dd.ten_dia_diem));
+                            eventDiv.append($("<div></div>").text("Mô Tả Địa Điểm Diễn Ra: " + dd.mo_ta_dd));
+                            eventDiv.append($("<div></div>").text("Vị Trí Cụ Thể Của Địa Điểm: " + dd.vi_tri));
+                            break;
+                        }
+                    }
+                    for (var h = 0; h < dataTDQT.length; h++) {
+                        var tdqt = dataTDQT[h];
+                        if (history.id_thoi_diem == dd.id_thoi_diem) {
+                            eventDiv.append($("<div></div>").text("Thời Điểm Quan Trọng: " + tdqt.ten_thoi_diem));
+                            eventDiv.append($("<div></div>").text("Diễn Biến Thời Điểm Quan Trọng: " + tdqt.mo_ta_td));
+                            eventDiv.append($("<div></div>").text("Thời Gian Diễn Ra Sự Kiện Quan Trọng: " + tdqt.ngay));
+                            break;
+                        }
+                    }
+                    eventDiv.append($("<div></div>").html(
+                        `<button class="delete-btn" onclick="XoaHang('${history.id_su_kien}',this)">Xóa</button>
+                        <button class="edit-btn" onclick="chinhSuaHang('${history.id_su_kien}', this)">Sửa</button>
+                        `
                     ));
-                    tbody.append(hangMoi);
+
+                    container.append(eventDiv);
                 }
             } else {
-                tbody.append('<tr><td colspan="4">Không có dữ liệu nào.</td></tr>');
+                container.append('<div>Không có dữ liệu nào.</div>');
             }
         }, 'json');
     }
 
-    
-
     function themHang() {
-        var ten = $("#nameInput").val();
-        if (ten == '') {
-            alert("Nhập tên đi");
-            return;
-        }
-        $("#nameInput").val("");
-        var viTri = parseInt($("#locationInput").val());
+        var idSuKien = $("#idInput").val();
+        var ten = $("#tenInput").val();
+        var mota = $("#motaInput").val();
+        var ngaybd = $("#ngaybdInput").val();
+        var ngaykt = $("#ngayktInput").val();
+        var loaisk = $("#loaiInput").val();
 
-        $.post('api.aspx', { action: 'add', ten: ten, ma_vi_tri: viTri }, function (data) {
+        var tenNhanVat = $("#tennvInput").val();
+        var ngaySinh = $("#ngaysinhInput").val();
+        var ngayMat = $("#ngaymatInput").val();
+        var vaiTro = $("#vaitroInput").val();
+        var moTaNV = $("#motanvInput").val();
+
+        var tenDiaDiem = $("#tenddInput").val();
+        var viTri = $("#vitriddInput").val();
+        var moTaDD = $("#motaddInput").val();
+
+        var tenThoiDiem = $("#tentdqtInput").val();
+        var thoiDiem = $("#thoiDiemtdqtInput").val();
+        var moTaTDQT = $("#motatdqtInput").val();
+
+        $.post('API.aspx', {
+            action: 'add',
+            id_su_kien: idSuKien,
+            ten_su_kien: ten,
+            mo_ta: mota,
+            ngay_bat_dau: ngaybd,
+            ngay_ket_thuc: ngaykt,
+            loai_su_kien: loaisk,
+            ten_nhan_vat: tenNhanVat,
+            ngay_sinh: ngaySinh,
+            ngay_mat: ngayMat,
+            vai_tro: vaiTro,
+            mo_ta_nv: moTaNV,
+            ten_dia_diem: tenDiaDiem,
+            vi_tri: viTri,
+            mo_ta_dd: moTaDD,
+            ten_thoi_diem: tenThoiDiem,
+            ngay: thoiDiem,
+            mo_ta_td: moTaTDQT
+        }, function (data) {
             if (data.ok) {
-                $("#nameInput").val("");
-                $("#locationInput").val("1");
+                alert("Đã Thêm Thành Công", 'success');
                 loadTable();
             } else {
                 alert("Thêm thất bại");
@@ -51,57 +122,40 @@
         }, 'json');
     }
 
-    window.xoaHang = function (ma_thanh_vien, button) {
-        $.post('api.aspx', { action: 'delete', ma_thanh_vien: ma_thanh_vien }, function (data) {
+
+
+    window.XoaHang = function (id_su_kien, button) {
+        $.post('API.aspx', { action: 'delete', id_su_kien_delete: id_su_kien }, function (data) {
             if (data.ok) {
-                $(button).closest('tr').remove();
+                alert("Đã Xóa Thành Công", 'success');
+                loadTable();
             } else {
                 alert('Xoá thất bại');
             }
         }, 'json');
+    };
+
+    window.chinhSuaHang = function (id_su_kien, button) {
+        var container = $(button).closest('.event');
+        var moTa = container.find('div').eq(2).text().replace('Mô Tả: ', '');
+        container.find('div').eq(2).html(`<input type='text' value='${moTa}' />`);
+        $(button).replaceWith(`<button class='save-btn' onclick='luuHang(${id_su_kien}, this)'>Lưu</button>`);
     }
 
-    window.chinhSuaHang = function (ma_thanh_vien, button) {
-        var hang = $(button).closest('tr');
-        var oViTri = hang.find('td').eq(2);
-        var viTriHienTai = oViTri.text();
+    window.luuHang = function (id_su_kien, button) {
+        var container = $(button).closest('.event');
+        var moTa = container.find('input').val();
 
-        oViTri.attr('data-vi-tri-cu', viTriHienTai);
-        oViTri.html(`
-            <select class='editable'>
-                <option value='1' ${viTriHienTai === 'KTX' ? 'selected' : ''}>KTX</option>
-                <option value='2' ${viTriHienTai === 'Nhà trọ' ? 'selected' : ''}>Nhà trọ</option>
-                <option value='3' ${viTriHienTai === 'Trường' ? 'selected' : ''}>Trường</option>
-                <option value='4' ${viTriHienTai === 'Chợ' ? 'selected' : ''}>Chợ</option>
-                <option value='5' ${viTriHienTai === 'Không biết' ? 'selected' : ''}>Không biết</option>
-            </select>
-        `);
-
-        $(button).replaceWith(`<button class='save-btn' onclick='luuHang(${ma_thanh_vien}, this)'>Lưu</button>`);
-    }
-
-    window.luuHang = function (ma_thanh_vien, button) {
-        var hang = $(button).closest('tr');
-        var viTri = parseInt(hang.find('select').val());
-
-        $.post('api.aspx', { action: 'update', ma_thanh_vien: ma_thanh_vien, ma_vi_tri: viTri }, function (data) {
+        $.post('api.aspx', { action: 'update', id_su_kien: id_su_kien, mo_ta: moTa }, function (data) {
             if (data.ok) {
-                hang.find('td').eq(1).text(getTenViTri(viTri));
-                $(button).replaceWith(`<button class="edit-btn" onclick="chinhSuaHang(${ma_thanh_vien}, this)">Sửa</button>`);
+                loadTable();
             } else {
                 alert('Chỉnh sửa thất bại');
             }
         }, 'json');
     }
 
-   
-
+    $("#addBtn").click(themHang);
 
     loadTable();
-
-    //$(window).click(function (event) {
-    //    if (event.target.id === "loginModal") {
-    //        $("#loginModal").hide();
-    //    }
-    //});
 });

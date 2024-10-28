@@ -1,48 +1,114 @@
-﻿* {
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    line-height: 1.6;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f0f0f0;
+h1 {
+    background-color: #4CAF50;
+    color: white;
     padding: 20px;
+    text-align: center;
 }
 
 h2 {
-    margin-bottom: 20px;
-    font-size: 28px;
-    color: #333;
+    color: #4CAF50;
+    text-align: center;
+    margin-top: 20px;
+}
+#conten {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+#themSuKien {
+    width: 30%;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 700px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-th {
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+input[type="text"], input[type="date"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button {
     background-color: #4CAF50;
     color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+#skls {
+    margin: 20px auto;
+    max-width: 800px;
+    width:70%;
+}
+
+.event {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    .event div {
+        margin-bottom: 10px;
+    }
+
+    .event button {
+        margin-right: 10px;
+    }
+
+.edit-btn {
+    background-color: #ffa500;
+}
+
+    .edit-btn:hover {
+        background-color: #ff8c00;
+    }
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+    .delete-btn:hover {
+        background-color: #d32f2f;
+    }
+
+#alertContainer {
+    color: red;
     font-weight: bold;
-    padding: 10px;
-    text-align: left;
-    border-bottom: 2px solid #ddd;
-}
-
-td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-tr:hover {
-    background-color: #ddd;
+    margin-top: 20px;
+    text-align: center;
 }
