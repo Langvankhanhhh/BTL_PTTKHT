@@ -1,114 +1,283 @@
 ﻿body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #1b1b2f;
+    color: #000000;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
 }
 
 h1 {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
     text-align: center;
+    color: antiquewhite;
 }
 
-h2 {
-    color: #4CAF50;
-    text-align: center;
-    margin-top: 20px;
-}
-#conten {
+#skls {
     display: flex;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-#themSuKien {
-    width: 30%;
-    background-color: #fff;
     padding: 20px;
     margin: 20px auto;
+    background-color: #2a2a3e;
     border-radius: 8px;
-    max-width: 700px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap; 
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 20px; 
 }
 
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin-top: 10px;
+    #skls > div {
+        color: #000000;
+        text-align: center;
+        font-size: 18px;
+    }
+
+.event {
+    width:40%;
+    border: 1px solid #3d3d5c;
+    background-color: #2a2a3e;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
-input[type="text"], input[type="date"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+.event-id, .event-name, .event-desc, .event-start, .event-end, .event-type {
+    padding: 5px 0;
+    color: #f5f5f5;
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
+    padding: 8px 15px;
+    margin: 5px 3px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.delete-btn {
+    background-color: #ff4b5c;
+}
+
+.edit-btn {
+    background-color: #ffab4b;
+}
+
+.add-btn {
+    background-color: #5cd65c;
+}
+
+.nhan-vat, .dien-bien, .luc-luong {
+    margin-top: 10px;
+    padding-left: 20px;
+    color: #000000;
+}
+
+#addSuKienForm {
+    background-color: #2a2a3e;
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+    #addSuKienForm label {
+        color: #cfcfcf;
+    }
+
+    #addSuKienForm input[type="text"],
+    #addSuKienForm input[type="date"] {
+        background-color: #1f1f2e;
+        color: #ffffff;
+        border: 1px solid #3d3d5c;
+        padding: 8px;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+
+    #addSuKienForm .form-control:focus {
+        outline: none;
+        border-color: #5cd65c;
+    }
+
+.jconfirm .jconfirm-title-c {
+    color: #ffffff;
+    background-color: #2a2a3e;
+}
+
+.jconfirm-buttons .btn-primary {
+    background-color: #5cd65c;
+    border-color: #5cd65c;
+}
+
+.jconfirm-buttons .btn-secondary {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+    .jconfirm-buttons .btn-primary:hover,
+    .jconfirm-buttons .btn-secondary:hover {
+        opacity: 0.9;
+    }
+
+.event {
+    margin: 20px;
+    padding: 15px;
+    border: 2px solid #007bff;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+    .event .event-id, .event .event-name, .event .event-desc, .event .event-start, .event .event-end, .event .event-type {
+        font-weight: bold;
+        margin: 5px 0;
+        color: #333;
+    }
+
+    .event .nhan-vat {
+        margin-top: 10px;
+        padding: 10px;
+        border-left: 4px solid #28a745;
+        background-color: #e9f7ef;
+        border-radius: 5px;
+    }
+
+.dien-bien {
+    margin-top: 10px;
+    padding: 10px;
+    border-left: 4px solid #ffc107;
+    background-color: #fffbea;
+    border-radius: 5px;
+}
+
+.luc-luong {
+    margin-top: 10px;
+    padding: 10px;
+    border-left: 4px solid #17a2b8;
+    background-color: #e0f7fa;
+    border-radius: 5px;
+}
+
+button {
+    margin: 5px 3px;
+    padding: 5px 10px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
     button:hover {
-        background-color: #45a049;
-    }
-
-#skls {
-    margin: 20px auto;
-    max-width: 800px;
-    width:70%;
-}
-
-.event {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-    .event div {
-        margin-bottom: 10px;
-    }
-
-    .event button {
-        margin-right: 10px;
-    }
-
-.edit-btn {
-    background-color: #ffa500;
-}
-
-    .edit-btn:hover {
-        background-color: #ff8c00;
+        background-color: #5a6268;
     }
 
 .delete-btn {
-    background-color: #f44336;
+    background-color: #dc3545;
 }
 
-    .delete-btn:hover {
+.edit-btn {
+    background-color: #007bff;
+}
+
+.add-btn {
+    background-color: #28a745;
+}
+.jconfirm-holder {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    width:100%;
+}
+
+.jconfirm-box {
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.jconfirm-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
+.jconfirm-content {
+    padding: 20px;
+}
+
+.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+    .form-control:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 4px rgba(74, 144, 226, 0.3);
+    }
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+
+.mb-3 {
+    margin: 10px 10px 20px 10px;
+    width: 90%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+}}
+
+.jconfirm-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 0 0 8px 8px;
+}
+
+    .jconfirm-buttons .btn {
+        flex: 1;
+        padding: 10px 20px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .jconfirm-buttons .btn-primary {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .jconfirm-buttons .btn-secondary {
+        background-color: #f44336;
+        color: white;
+    }
+
+    .jconfirm-buttons .btn:hover {
+        transform: scale(1.05);
+    }
+
+    .jconfirm-buttons .btn-primary:hover {
+        background-color: #388e3c;
+    }
+
+    .jconfirm-buttons .btn-secondary:hover {
         background-color: #d32f2f;
     }
 
-#alertContainer {
-    color: red;
-    font-weight: bold;
-    margin-top: 20px;
-    text-align: center;
-}
+

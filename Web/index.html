@@ -7,68 +7,24 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
+    <link href="js/jquery-confirm.min.css" rel="stylesheet" />
     <script src="js.js"></script>
+    <script src="js/crypto-js.js"></script>
     <link href="type.css" rel="stylesheet" />
 </head>
 <body>
     <h1>Quản lý Sự Kiện Lịch Sử</h1>
+    <div class="khung_tren">
+        <button id="trangchu">Trang Chủ</button>
+        <button id="dangky" onclick="dangky()">Đăng ký</button>
+        <button id="dangnhap" onclick="dangnhap()">Đăng Nhập</button>
+        <button id="logout">Đăng Xuất</button>
+        <button onclick="timkiem()">Tìm kiếm</button>
+    </div>
     <div id="conten">
+        <button class="delete-btn" onclick="themsk()">Thêm sự kiện</button>
         <div id="skls">
-        </div>
-        <div id="themSuKien">
-            <h2>Thêm Sự Kiện Mới</h2>
-            <label for="idInput">ID Sự Kiện:</label>
-            <input type="text" id="idInput"><br>
-
-            <label for="tenInput">Tên Sự Kiện:</label>
-            <input type="text" id="tenInput"><br>
-
-            <label for="motaInput">Mô Tả:</label>
-            <input type="text" id="motaInput"><br>
-
-            <label for="ngaybdInput">Ngày Bắt Đầu:</label>
-            <input type="date" id="ngaybdInput"><br>
-
-            <label for="ngayktInput">Ngày Kết Thúc:</label>
-            <input type="date" id="ngayktInput"><br>
-
-            <label for="loaiInput">Loại Sự Kiện:</label>
-            <input type="text" id="loaiInput"><br>
-
-            <label for="tennvInput">Tên Nhân Vật:</label>
-            <input type="text" id="tennvInput"><br>
-
-            <label for="ngaysinhInput">Ngày Sinh:</label>
-            <input type="date" id="ngaysinhInput"><br>
-
-            <label for="ngaymatInput">Ngày Mất (Nếu Có):</label>
-            <input type="date" id="ngaymatInput"><br>
-
-            <label for="vaitroInput">Vai trò:</label>
-            <input type="text" id="vaitroInput"><br>
-
-            <label for="motanvInput">Mô Tả Nhân Vật:</label>
-            <input type="text" id="motanvInput"><br>
-
-            <label for="tenddInput">Tên Địa Điểm:</label>
-            <input type="text" id="tenddInput"><br>
-
-            <label for="vitriddInput">Vị Trí:</label>
-            <input type="text" id="vitriddInput"><br>
-
-            <label for="motaddInput">Mô Tả Địa Điểm:</label>
-            <input type="text" id="motaddInput"><br>
-
-            <label for="tentdqtInput">Tên Thời Điểm Quan Trọng:</label>
-            <input type="text" id="tentdqtInput"><br>
-
-            <label for="thoiDiemtdqtInput">Thời Điểm:</label>
-            <input type="date" id="thoiDiemtdqtInput"><br>
-
-            <label for="motatdqtInput">Mô Tả:</label>
-            <input type="text" id="motatdqtInput"><br>
-
-            <button id="addBtn">Thêm</button>
         </div>
     </div>
 </body>

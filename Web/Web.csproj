@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\lib_DB\packages\Newtonsoft.Json.13.0.3\lib\net20\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -49,6 +52,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -58,11 +62,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="API.aspx" />
+    <Content Include="assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\js\bold-and-bright.js" />
     <Content Include="index.html" />
     <Content Include="js.js" />
+    <Content Include="js\crypto-js.js" />
+    <Content Include="js\jquery-confirm.min.css" />
+    <Content Include="js\jquery-confirm.min.js" />
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="login.html" />
+    <Content Include="signup.html" />
     <Content Include="type.css" />
     <Content Include="Web.config" />
   </ItemGroup>
